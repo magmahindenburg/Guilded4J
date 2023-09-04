@@ -13,6 +13,7 @@ public class Mentions //TODO: implement when guilded.gg changes their design
 {
     // the Mentions model is shitty made and should be changed. im not going to implement this atm
 
+    Channel[] channels;
     boolean everyone;
     boolean here;
 
@@ -30,5 +31,28 @@ public class Mentions //TODO: implement when guilded.gg changes their design
 
     public void setHere(boolean here) {
         this.here = here;
+    }
+
+    public void setChannel(String id) {
+        channels = new Channel[1];
+        channels[0] = new Channel(id);
+    }
+
+    public void setChannels(String[] ids) {
+        channels = new Channel[ids.length];
+        int i=0;
+        for (String id : ids) {
+            channels[i] = new Channel(id);
+            i++;
+        }
+
+    }
+
+    private class Channel {
+        private String id;
+
+        public Channel(String id) {
+            this.id = id;
+        }
     }
 }

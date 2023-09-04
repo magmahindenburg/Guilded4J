@@ -54,7 +54,7 @@ public class ChatMessageManager extends RestManager
                                 .set("isPrivate", replyMessageIds == null ? null : isPrivate)
                                 .set("isSilent", replyMessageIds == null ? null : isSilent)
                                 .set("mentions", mentions == null ? null : mentions)
-                ).getJSONObject("message")
+                ).getJSONObject("message")w
         );
     }
     public ChatMessage createChannelMessage(String channelId, String content, Embed[] embeds, String[] replyMessageIds, Boolean isPrivate, Boolean isSilent)
@@ -69,7 +69,7 @@ public class ChatMessageManager extends RestManager
 
     public ChatMessage createChannelMessage(String channelId, String content, Mentions mentions)
     {
-        return createChannelMessage(channelId, content, null, null, null, null);
+        return createChannelMessage(channelId, content, null, null, null, null, mentions);
     }
 
     public ChatMessage createChannelMessage(String channelId, Embed embed)
