@@ -53,7 +53,7 @@ public class ChatMessageManager extends RestManager
                                 .set("replyMessageIds", replyMessageIds == null ? null : new JSONArray(replyMessageIds))
                                 .set("isPrivate", replyMessageIds == null ? null : isPrivate)
                                 .set("isSilent", replyMessageIds == null ? null : isSilent)
-                                .set("mentions", mentions)
+                                .set("mentions", mentions == null ? null : mentions.getJson())
                 ).getJSONObject("message")
         );
     }

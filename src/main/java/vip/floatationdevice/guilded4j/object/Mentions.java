@@ -5,6 +5,10 @@
 
 package vip.floatationdevice.guilded4j.object;
 
+
+import cn.hutool.json.JSONObject;
+import com.google.gson.Gson;
+
 /**
  * Metadata of who or what is mentioned in content.<br>
  * <a href="https://www.guilded.gg/docs/api/channels/Mentions" target=_blank>https://www.guilded.gg/docs/api/channels/Mentions</a>
@@ -46,6 +50,13 @@ public class Mentions //TODO: implement when guilded.gg changes their design
             i++;
         }
 
+    }
+
+    public JSONObject getJson() {
+        JSONObject json = new JSONObject();
+        json.set("everyone", everyone);
+        json.set("here", here);
+        return json;
     }
 
     private class Channel {
