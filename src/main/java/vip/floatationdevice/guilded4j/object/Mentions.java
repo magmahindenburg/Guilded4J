@@ -12,4 +12,23 @@ package vip.floatationdevice.guilded4j.object;
 public class Mentions //TODO: implement when guilded.gg changes their design
 {
     // the Mentions model is shitty made and should be changed. im not going to implement this atm
+
+    boolean everyone;
+    boolean here;
+
+    public boolean isEveryone() {
+        return everyone;
+    }
+
+    public void setEveryone(boolean everyone) {
+        this.everyone = everyone;
+    }
+
+    public boolean isHere() {
+        return here;
+    }
+
+    public void setHere(boolean here) {
+        this.here = here;
+    }
 }

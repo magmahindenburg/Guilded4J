@@ -12,6 +12,7 @@ import cn.hutool.json.JSONObject;
 import vip.floatationdevice.guilded4j.misc.GObjectQuery;
 import vip.floatationdevice.guilded4j.object.ChatMessage;
 import vip.floatationdevice.guilded4j.object.Embed;
+import vip.floatationdevice.guilded4j.object.Mentions;
 
 import java.util.Arrays;
 import java.util.function.Function;
@@ -37,7 +38,7 @@ public class ChatMessageManager extends RestManager
      * @param isSilent If set, this message will not notify any mentioned users or roles.
      * @return The newly created message's ChatMessage object.
      */
-    public ChatMessage createChannelMessage(String channelId, String content, Embed[] embeds, String[] replyMessageIds, Boolean isPrivate, Boolean isSilent)
+    public ChatMessage createChannelMessage(String channelId, String content, Embed[] embeds, String[] replyMessageIds, Boolean isPrivate, Boolean isSilent, Mentions mentions)
     {
         return ChatMessage.fromJSON(
                 execute(Method.POST,
@@ -52,11 +53,21 @@ public class ChatMessageManager extends RestManager
                                 .set("replyMessageIds", replyMessageIds == null ? null : new JSONArray(replyMessageIds))
                                 .set("isPrivate", replyMessageIds == null ? null : isPrivate)
                                 .set("isSilent", replyMessageIds == null ? null : isSilent)
+                                .set("mentions", mentions == null ? null : mentions)
                 ).getJSONObject("message")
         );
     }
+    public ChatMessage createChannelMessage(String channelId, String content, Embed[] embeds, String[] replyMessageIds, Boolean isPrivate, Boolean isSilent)
+    {
+        return createChannelMessage(channelId, content, embeds, replyMessageIds, isPrivate, isSilent, null);
+    }
 
     public ChatMessage createChannelMessage(String channelId, String content)
+    {
+        return createChannelMessage(channelId, content, null, null, null, null);
+    }
+
+    public ChatMessage createChannelMessage(String channelId, String content, Mentions mentions)
     {
         return createChannelMessage(channelId, content, null, null, null, null);
     }
