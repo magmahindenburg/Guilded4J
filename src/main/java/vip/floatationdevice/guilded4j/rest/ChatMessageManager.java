@@ -57,6 +57,12 @@ public class ChatMessageManager extends RestManager
                 ).getJSONObject("message")
         );
     }
+    public ChatMessage createRawChannelMessage(String channelId, JSONObject rawJson)
+    {
+        return ChatMessage.fromJSON(
+                execute(Method.POST,
+                        MSG_CHANNEL_URL.replace("{channelId}", channelId),rawJson).getJSONObject("message"));
+    }
     public ChatMessage createChannelMessage(String channelId, String content, Embed[] embeds, String[] replyMessageIds, Boolean isPrivate, Boolean isSilent)
     {
         return createChannelMessage(channelId, content, embeds, replyMessageIds, isPrivate, isSilent, null);

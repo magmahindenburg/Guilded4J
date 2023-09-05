@@ -18,8 +18,8 @@ public class Mentions //TODO: implement when guilded.gg changes their design
     // the Mentions model is shitty made and should be changed. im not going to implement this atm
 
     Channel[] channels;
-    boolean everyone;
-    boolean here;
+    boolean everyone = false;
+    boolean here = false;
 
     public boolean isEveryone() {
         return everyone;
